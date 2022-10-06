@@ -1,12 +1,18 @@
 #!/bin/bash
 
-arx= tail -n +2 "netflix_titles.csv"
-while IFS ="," read -r id  type title director 
-do
-	echo "Tipus: $type"
-	echo "Títol: $title"
-	echo "Director: $director"
+OLDIFS=$IFS
+IFS=","
 
-#done<(tail -n +2 netflix_titles.csv)
-done<arx
+while read id type title director 
+do
+	echo -e "\e[1;33m$user \
+	================================\e[0m\n\
+	
+	Id : \t $id\n\
+	Tipus : \t $type\n\
+	Títol : \t $title\n"
+	
+
+done<netflix_titles.csv
+IFS=$OLDIFS
 
